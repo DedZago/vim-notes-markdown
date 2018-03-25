@@ -4,7 +4,7 @@
 
 This plugin helps in two fronts: It allows you to take notes in markdown and organizes them in global notes folder (that can be synced between multiple devices using any sync service like DropBox, NextCloud). Motivation behind this plugin are:
 
- - Markdown is a great way to take notes. Some note-taking tools do allow to take notes in markdown. However, these tools most often store the notes in some other formats leading to incompatibility between different platforms (if the same program is not available on the other platform). 
+ - Markdown is a great way to take notes. Some note-taking tools do allow to take notes in markdown. However, these tools most often store the notes in some other formats leading to incompatibility between different platforms (if the same program is not available on the other platform).
  - The statement that "notes is stored as text" is not equivalent to "notes are easier to read". For instance, xml, json, html or yaml are text based but it is difficult to read. Considering this and above point I want to strictly limit myself to markdown as note taking and storage format.
  - I do not want to leave the comfort of vim for any awesome note-taking application (doesn't matter how awesome features it has). Some applications do provide vim mode, but, they cannot use my vimrc and, hence, cannot take advantage of different plugins and customizations I use on vim.
 
@@ -32,7 +32,7 @@ This plugin need three different kinds of dependencies as listed in following ta
 |-------|--------------------------------------|----------------------------------------|------------------------------|
 | 1     | Displaying global note folder        | [NERDTree](https://github.com/scrooloose/nerdtree)             | netrw   |
 | 2     | Fuzzy Search of file names in folder | [FZF](https://github.com/junegunn/fzf), [CtrlP](https://github.com/ctrlpvim/ctrlp.vim), [Unite](https://github.com/Shougo/unite.vim) | open the global notes folder |
-| 3     | Search within all note files         | [Ack](https://github.com/mileszs/ack.vim)     | vimgrep    |
+| 3     | Search within all note files         | [Ack](https://github.com/mileszs/ack.vim)     | try to use grep otherwise vimgrep    |
 
 For having good user experience, at least one of the dependencies for each category should be setup properly in vimrc. It is also desirable to use plugin with good syntax support for markdown. I recommend [vim-markdown](https://github.com/plasticboy/vim-markdown).
 

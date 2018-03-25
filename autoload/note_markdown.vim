@@ -83,11 +83,14 @@ endfunction
 
 function! note_markdown#SearchNoteFiles(args)
 	let l:curr_pwd=getcwd()
+	" Changing the directory reduces the file path in quickfix window
 	execute 'cd' g:note_markdown_dir
 	if exists(':Ack')
-		execute 'Ack' a:args g:note_markdown_dir
+		execute 'Ack' a:args
+	elseif exists(':grep')
+		execute 'grep -r -e' a:args '**'
 	else
-		execute 'vimgrep' a:args g:note_markdown_dir
+		execute 'vimgrep' a:args '**'
 	endif
 	execute 'cd' l:curr_pwd
 endfunction
