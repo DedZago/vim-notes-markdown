@@ -4,8 +4,8 @@
 
 This plugin helps in two fronts: It allows you to take notes in markdown and organizes them in global notes folder (that can be synced between multiple devices using any sync service like DropBox, NextCloud). Motivation behind this plugin are:
 
- - Markdown is a great way to take notes. Some note-taking tools do allow to take notes in markdown. However, these tools most often store the notes in some other formats leading to incompatibility between different platforms (if the same program is not available on the other platform). I want to strictly limit myself to markdown as note taking and storage format.
- - The statement that "notes is stored as text" is not equivalent to "notes are easier to read". For instance, xml, json, html or yaml are text based but it is difficult to read.
+ - Markdown is a great way to take notes. Some note-taking tools do allow to take notes in markdown. However, these tools most often store the notes in some other formats leading to incompatibility between different platforms (if the same program is not available on the other platform). 
+ - The statement that "notes is stored as text" is not equivalent to "notes are easier to read". For instance, xml, json, html or yaml are text based but it is difficult to read. Considering this and above point I want to strictly limit myself to markdown as note taking and storage format.
  - I do not want to leave the comfort of vim for any awesome note-taking application (doesn't matter how awesome features it has). Some applications do provide vim mode, but, they cannot use my vimrc and, hence, cannot take advantage of different plugins and customizations I use on vim.
 
 ## Installation
@@ -39,23 +39,23 @@ For having good user experience, at least one of the dependencies for each categ
 
 ## Configuration Options
 
- - g:note_markdown_dir : The parent directory where the all the notes will be saved. (default location is `&l:runtimepath.'/note`, *i.e.*, `notes` folder in vim runtime path)
- - g:open_note_dir_in_split : A boolean if set will open the note folder in split. By default note folder is not open in split (default: 0).
- - g:default_notes_extension : Default is `.md`. It can be changed to other extension like `.note.md`. However, changing the extension do not change the storage format. The file is still stored as markdown.
+ - `g:note_markdown_dir` : The parent directory where the all the notes will be saved. (default location is `&l:runtimepath.'/note`, *i.e.*, `notes` folder in vim runtime path)
+ - `g:open_note_dir_in_split` : A boolean if set will open the note folder in split. By default note folder is not open in split (default: 0).
+ - `g:default_notes_extension` : Default is `.md`. It can be changed to other extension like `.note.md`. However, changing the extension do not change the storage format. The file is still stored as markdown.
 
 ## Command Provided
 
- - :NoteSearch - Search all the notes directory for text (one argument needed)
- - :NoteCreate - make new note with filename or folder structure. (take file name with folder structure). The command `:NoteCreate test` will create note file named `first_note` in global note directory. On the other hand, the command `:NoteCreate test\second_note` will create note file named `second_note` in `temp` directory of global note directory. Any number of nesting of folder structure is supported. This command also ignores the file extension and use the file extension setup in configuration.
- - :NoteFolder - open the note folder.
- - :NoteFuzzySearch - Open the note file matching with the filename. (fuzzy searching)
+ - `:NoteSearch` - Search all the notes directory for text (one argument needed)
+ - `:NoteCreate` - make new note with filename or folder structure. (take file name with folder structure). The command `:NoteCreate test` will create note file named `first_note` in global note directory. On the other hand, the command `:NoteCreate test\second_note` will create note file named `second_note` in `temp` directory of global note directory. Any number of nesting of folder structure is supported. This command also ignores the file extension and use the file extension setup in configuration.
+ - `:NoteFolder` - open the note folder.
+ - `:NoteFuzzySearch` - Open the note file matching with the filename. (fuzzy searching)
 
-	 These commands have shorter names too (:NS, :NC, :NF and :NFS).
+	 These commands have shorter names too (`:NS`, `:NC`, `:NF` and `:NFS`).
 
 ## Default mapping
 
- - <leader>nf is mapped to :NoteFolder
- - <leader>nfs is mapped to :NoteFuzzySearch
+ - `<leader>nf` is mapped to `:NoteFolder`
+ - `<leader>nfs` is mapped to `:NoteFuzzySearch`
 
 
 ## Known Issues
