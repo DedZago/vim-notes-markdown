@@ -13,8 +13,7 @@ The plugin can be installed using [Pathogen](https://github.com/tpope/vim-pathog
 If you use [Pathogen](https://github.com/tpope/vim-pathogen), following commands in shell will install this plugin:
 
 ```sh
-cd ~/.vim/bundle
-git clone https://github.com/mayanksuman/vim-note-markdown
+cd ~/.vim/bundle && git clone https://github.com/mayanksuman/vim-notes-markdown
 ```
 If you use [Vundle](https://github.com/gmarik/vundle), then adding following lines in vimrc will help.
 ```vim
