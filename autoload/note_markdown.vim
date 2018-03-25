@@ -1,0 +1,98 @@
+if exists("g:autoloaded_note_markdown") || &cp
+  finish
+endif
+
+
+" If the notes directory do not exist then make it otherwise do nothing
+function! s:makeNoteDir()
+	let dir = g:note_markdown_dir
+	call mkdir(expand(dir), 'p')
+	if isdirectory(dir)
+		return dir
+	else
+		echoerr "Failed to make notes folder:".dir
+	endif
+	if filewritable(dir) != 2
+		echoerr "Notes folder is not having write permission."
+	endif
+	return dir
+endfunction
+
+
+" If the notes directory do not exist then make it otherwise do nothing
+function! note_markdown#MakeNoteFile(args)
+	if (a:args[0]=='\') || (a:args[len(a:args)-1]=='\') || (a:args[0]=='/') || (a:args[len(a:args)-1]=='/')
+		echoerr 'Note file name can not start or end with either of \ or /.'
+		return
+	endif
+	let l:curr_note_file=g:note_markdown_dir.a:args
+	"Remove any extension and make it markdown file
+	let l:curr_note_file = fnamemodify(l:curr_note_file,':r').g:default_notes_extension
+	if empty(glob(l:curr_note_file))
+		let l:dir=fnamemodify( l:curr_note_file, ':p:h')
+		if isdirectory(l:curr_note_file)
+			echoerr "Can not create note as folder with same name exist."
+			return
+		endif
+		call mkdir(expand(l:dir), 'p')
+		if !isdirectory(l:dir)
+			echoerr "Failed to make notes folder:".l:dir
+			return
+		endif
+	endif
+	wincmd l
+	execute 'e' fnameescape(l:curr_note_file)
+	return expand(l:curr_note_file)
+endfunction
+
+function! s:noteAutocmd()
+	augroup note_markdown
+		au!
+		execute 'au BufEnter,CursorHold,CursorHoldI,BufUnload,WinLeave' '*'.g:default_notes_extension 'update'
+		"execute 'au TextChanged,TextChangedI' '*'.g:default_notes_extension 'update'	"Great but too slow vim
+	augroup END
+endfunction
+
+" show note folder
+function! note_markdown#ShowNoteFolder()
+	if (g:open_note_dir_in_split==0)
+		execute 'e' fnameescape(g:note_markdown_dir)
+	else
+		if exists(':NERDTree')
+			execute 'NERDTree' fnameescape(g:note_markdown_dir)|40winc|
+			let s:is_nerdtree_used=1
+		else
+			execute 'vsplit' fnameescape(g:note_markdown_dir)|40winc|
+		endif
+	endif
+endfunction
+
+function! note_markdown#OpenNoteFuzzy()
+	wincmd l
+	if exists(':FZF')
+		execute 'FZF' g:note_markdown_dir
+	elseif exists(':CtrlP')
+		execute 'CtrlP' g:note_markdown_dir
+	elseif exists(':Unite')
+		execute 'Unite file file_rec/async' g:note_markdown_dir
+	else
+		echoerr "Neither FZF, CtrlP or Unite found for fuzzy search. Falling back to directory mode."
+		call note_markdown#ShowNoteFolder()
+	endif
+endfunction
+
+function! note_markdown#SearchNoteFiles(args)
+	let l:curr_pwd=getcwd()
+	execute 'cd' g:note_markdown_dir
+	if exists(':Ack')
+		execute 'Ack' a:args g:note_markdown_dir
+	else
+		execute 'vimgrep' a:args g:note_markdown_dir
+	endif
+	execute 'cd' l:curr_pwd
+endfunction
+
+call s:makeNoteDir()
+call s:noteAutocmd()
+
+let g:autoloaded_note_markdown=1
