@@ -42,6 +42,11 @@ function! note_markdown#MakeNoteFile(args)
 	endif
 	wincmd l
 	execute 'e' fnameescape(l:curr_note_file)
+	if (g:open_note_folded==0)
+		sellocal nofoldenable
+	else
+		set foldenable
+	endif
 	return expand(l:curr_note_file)
 endfunction
 

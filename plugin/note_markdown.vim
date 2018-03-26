@@ -25,20 +25,27 @@ if !exists('g:open_note_dir_in_split')
 	let g:open_note_dir_in_split=0
 endif
 
+if !exists('g:open_note_folded')
+	let g:open_note_folded=0
+endif
+
 " Longer detailed commands
 command! -nargs=1 NoteSearch call note_markdown#SearchNoteFiles(<f-args>)
 command! NoteFuzzySearch call note_markdown#OpenNoteFuzzy()
 command! -nargs=1 NoteCreate call note_markdown#MakeNoteFile(<f-args>)
 command! NoteFolder call note_markdown#ShowNoteFolder()
+command! ToDo call note_markdown#MakeNoteFile('ToDo')
 
 " Short commands
 command! -nargs=1 NS call note_markdown#SearchNoteFiles(<f-args>)
 command! NFS call note_markdown#OpenNoteFuzzy()
 command! -nargs=1 NC call note_markdown#MakeNoteFile(<f-args>)
 command! NF call note_markdown#ShowNoteFolder()
+command! TD call note_markdown#MakeNoteFile('ToDo')
 
 "Some maps
 map <leader>nfs :NoteFuzzySearch<cr>
 map <leader>nf :NoteFolder<cr>
+map <leader>td :TD<cr>
 
 let g:pluginloaded_note_markdown=1

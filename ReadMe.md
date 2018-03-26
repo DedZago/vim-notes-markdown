@@ -41,6 +41,9 @@ For having good user experience, at least one of the dependencies for each categ
  - `g:note_markdown_dir` : The parent directory where the all the notes will be saved. (default location is `&l:runtimepath.'/note`, *i.e.*, `notes` folder in vim runtime path)
  - `g:open_note_dir_in_split` : A boolean if set will open the note folder in split. By default note folder is not open in split (default: 0).
  - `g:default_notes_extension` : Default is `.md`. It can be changed to other extension like `.note.md`. However, changing the extension do not change the storage format. The file is still stored as markdown.
+ - `g:open_note_folded` : If set to 0, the notes file will be opened without fold. Default is 0. 
+
+Vim also respect the configuration provided at the end of file as comment. For example, adding `"set nofoldenable` will cause the the folds to be disable irrespective of setting of this plugin.
 
 ## Command Provided
 
@@ -48,13 +51,15 @@ For having good user experience, at least one of the dependencies for each categ
  - `:NoteCreate` - make new note with filename or folder structure. (take file name with folder structure). The command `:NoteCreate test` will create note file named `first_note` in global note directory. On the other hand, the command `:NoteCreate test\second_note` will create note file named `second_note` in `temp` directory of global note directory. Any number of nesting of folder structure is supported. This command also ignores the file extension and use the file extension setup in configuration.
  - `:NoteFolder` - open the note folder.
  - `:NoteFuzzySearch` - Open the note file matching with the filename. (fuzzy searching)
+ - `:ToDo` - open ToDo file in note folder
 
-	 These commands have shorter names too (`:NS`, `:NC`, `:NF` and `:NFS`).
+	 These commands have shorter names too (`:NS`, `:NC`, `:NF`, `:NFS` and `:TD`).
 
 ## Default mapping
 
  - `<leader>nf` is mapped to `:NoteFolder`
  - `<leader>nfs` is mapped to `:NoteFuzzySearch`
+ - `<leader>td` is mapped to `:ToDo`
 
 
 ## Known Issues
