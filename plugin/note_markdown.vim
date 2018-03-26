@@ -34,14 +34,14 @@ command! -nargs=1 NoteSearch call note_markdown#SearchNoteFiles(<f-args>)
 command! NoteFuzzySearch call note_markdown#OpenNoteFuzzy()
 command! -nargs=1 NoteCreate call note_markdown#MakeNoteFile(<f-args>)
 command! NoteFolder call note_markdown#ShowNoteFolder()
-command! ToDo call note_markdown#MakeNoteFile('ToDo')
+command! ToDo call note_markdown#MakeNoteFile('To Do')
 
 " Short commands
 command! -nargs=1 NS call note_markdown#SearchNoteFiles(<f-args>)
 command! NFS call note_markdown#OpenNoteFuzzy()
 command! -nargs=1 NC call note_markdown#MakeNoteFile(<f-args>)
 command! NF call note_markdown#ShowNoteFolder()
-command! TD call note_markdown#MakeNoteFile('ToDo')
+command! TD call note_markdown#MakeNoteFile('To Do')
 
 "Some maps
 map <leader>nfs :NoteFuzzySearch<cr>
