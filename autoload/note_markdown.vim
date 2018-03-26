@@ -43,9 +43,10 @@ function! note_markdown#MakeNoteFile(args)
 	wincmd l
 	execute 'e' fnameescape(l:curr_note_file)
 	if (g:open_note_folded==0)
-		sellocal nofoldenable
-	else
-		set foldenable
+		augroup note_markdown_buf
+			au!
+			au BufAdd,WinEnter <buffer> setf markdown.note|setlocal nofoldenable
+		augroup END
 	endif
 	return expand(l:curr_note_file)
 endfunction
