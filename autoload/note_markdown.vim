@@ -26,7 +26,7 @@ function! note_markdown#MakeNoteFile(args)
 		return
 	endif
 	let l:curr_note_file=g:note_markdown_dir.a:args
-	"Remove any extension and make it markdown file
+	" Remove any extension and make it markdown file
 	let l:curr_note_file = fnamemodify(l:curr_note_file,':r').g:default_notes_extension
 	if empty(glob(l:curr_note_file))
 		let l:dir=fnamemodify( l:curr_note_file, ':p:h')
@@ -41,6 +41,9 @@ function! note_markdown#MakeNoteFile(args)
 		endif
 	endif
 	wincmd l
+	" Copy notes template with current notes extension
+	" TODO: add variable to specify location and remove hardcode 
+	execute 'call system(''cp ~/Templates/notes-template' . g:default_notes_extension . ' ' . l:curr_note_file . ''')'
 	execute 'e' fnameescape(l:curr_note_file)
 	if (g:open_note_folded==0)
 		augroup note_markdown_buf
@@ -54,7 +57,7 @@ endfunction
 function! s:noteAutocmd()
 	augroup note_markdown
 		au!
-		execute 'au BufEnter,CursorHold,CursorHoldI,BufUnload,WinLeave' '*'.g:default_notes_extension 'update'
+		" execute 'au BufEnter,CursorHold,CursorHoldI,BufUnload,WinLeave' '*'.g:default_notes_extension 'update'
 		"execute 'au TextChanged,TextChangedI' '*'.g:default_notes_extension 'update'	"Great but too slow vim
 	augroup END
 endfunction
