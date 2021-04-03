@@ -43,7 +43,9 @@ function! note_markdown#MakeNoteFile(args)
 	wincmd l
 	" Copy notes template with current notes extension
 	" TODO: add variable to specify location and remove hardcode 
-	execute 'call system(''cp ~/Templates/notes-template' . g:default_notes_extension . ' ' . l:curr_note_file . ''')'
+	if empty(glob(fnameescape(l:curr_note_file)))
+		execute 'call system(''cp ~/Templates/notes-template' . g:default_notes_extension . ' ' . fnameescape(l:curr_note_file) . ''')'
+	endif
 	execute 'e' fnameescape(l:curr_note_file)
 	if (g:open_note_folded==0)
 		augroup note_markdown_buf
