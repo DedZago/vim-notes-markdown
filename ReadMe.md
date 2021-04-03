@@ -49,13 +49,13 @@ Vim also respects the configuration provided at the end of file as comment. For 
 ## Command Provided
 
  - `:NoteSearch` - Search all the notes directory for text (one argument needed)
- - `:NoteCreate` - make new note with filename or folder structure. (take file name with folder structure). The command `:NoteCreate test` will create note file named `first_note` in global note directory. On the other hand, the command `:NoteCreate test\second_note` will create note file named `second_note` in `temp` directory of global note directory. Any number of nesting of folder structure is supported. This command also ignores the file extension and use the file extension setup in configuration.
+ - `:NoteCreate` - Create new note by filename or folder structure. The command `:NoteCreate test` will create note file named `test` in global note directory. On the other hand, the command `:NoteCreate test/second_note` will create note file named `second_note` in `temp` directory of global note directory. Any number of nesting of folder structure is supported. This command also ignores the file extension and use the file extension specified in the configuration.
  - `:NoteFolder` - open the note folder.
- - `:NoteFuzzySearch` - Open the note file matching with the filename. (fuzzy searching)
+ - `:NoteFuzzySearch` - Open note fuzzy search filtered by note extension. (fuzzy searching)
  - `:ToDo` - open ToDo file in note folder
  - `:NoteQuick` - Open a quick note in main folder with name `YYYY-MM-DD-quicknote-HHmm`
  
-These commands have a corresponding short name (`:NS`, `:NC`, `:NF`, `:NFS` and `:TD`).
+These commands have a corresponding short name (`:NS`, `:NC`, `:NF`, `:NFS`, `:TD`, and `:NQ`).
 
 ## Default mapping
 
