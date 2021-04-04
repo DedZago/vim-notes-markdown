@@ -48,7 +48,7 @@ command! NQ call note_markdown#MakeNoteFile(strftime('%F-quicknote-%H%M'))
 "Some maps
 map <leader>nf :NoteFuzzySearch<cr>
 map <leader>nt :NoteFolder<cr>
-map <leader>nt :TD<cr>
-map <leader>nn :NQ<cr>
+map <leader>nd :ToDo<cr>
+map <leader>nn :NoteQuick<cr>
 
 let g:pluginloaded_note_markdown=1
