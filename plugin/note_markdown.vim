@@ -46,8 +46,8 @@ command! TD call note_markdown#MakeNoteFile('TODO')
 command! NQ call note_markdown#MakeNoteFile(strftime('%F-quicknote-%H%M'))
 
 "Some maps
-map <leader>nfs :NoteFuzzySearch<cr>
-map <leader>nf :NoteFolder<cr>
+map <leader>nf :NoteFuzzySearch<cr>
+map <leader>nt :NoteFolder<cr>
 map <leader>nt :TD<cr>
 map <leader>nn :NQ<cr>
 
