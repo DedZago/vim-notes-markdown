@@ -81,7 +81,7 @@ endfunction
 function! note_markdown#OpenNoteFuzzy()
 	wincmd l
 	if exists(':FZF')
-		execute 'call fzf#run(fzf#wrap({''source'': ''find ' . g:note_markdown_dir . ' | grep ' . g:default_notes_extension . '$'',  ''down'' : ''35%''}))'
+		execute 'call fzf#run(fzf#vim#with_preview(fzf#wrap({''source'': ''fzf -f ' . g:default_notes_extension . '$'', ''dir'' : ''' . g:note_markdown_dir . ''',  ''down'' : ''45%'', ''options'' : ''--prompt ' . g:note_markdown_dir . '''})))'
 	elseif exists(':CtrlP')
 		execute 'CtrlP' g:note_markdown_dir
 	elseif exists(':Unite')
